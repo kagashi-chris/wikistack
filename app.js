@@ -5,11 +5,13 @@ const { db, Page, User } = require("./models");
 
 const app = express();
 
-app.use('/users', require('./routes/users.js'))
-app.use('/wiki', require('./routes/wiki.js'))
 app.use(express.static(__dirname + "/public"));
 app.use(urlencoded({ extended: false }));
 app.use(express.json());
+
+app.use('/users', require('./routes/users.js'))
+app.use('/wiki', require('./routes/wiki.js'))
+
 
 app.get("/", (req, res) => {
   res.redirect("/wiki");
